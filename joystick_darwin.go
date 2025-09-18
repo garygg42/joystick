@@ -12,7 +12,6 @@ extern IOHIDManagerRef openHIDManager();
 extern void closeHIDManager(IOHIDManagerRef manager);
 extern void addHIDElement(void *value, void *parameter);
 extern char* cfStringToCharPtr(CFStringRef str);
-extern void freePtr(void* ptr);
 extern CFTypeRef getDeviceProperty(IOHIDDeviceRef device, CFStringRef key);
 extern int getIntegerValue(CFTypeRef value);
 #define kManufacturerKey CFSTR(kIOHIDManufacturerKey)
