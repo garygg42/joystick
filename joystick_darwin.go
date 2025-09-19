@@ -12,7 +12,6 @@ extern IOHIDManagerRef openHIDManager();
 extern void closeHIDManager(IOHIDManagerRef manager);
 extern void addHIDElement(void *value, void *parameter);
 extern char* cfStringToCharPtr(CFStringRef str);
-extern CFTypeRef getDeviceProperty(IOHIDDeviceRef device, CFStringRef key);
 extern int getIntegerValue(CFTypeRef value);
 #define kManufacturerKey CFSTR(kIOHIDManufacturerKey)
 #define kProductKey CFSTR(kIOHIDProductKey)
@@ -88,16 +87,16 @@ func addCallback(ctx unsafe.Pointer, res C.IOReturn, sender unsafe.Pointer, devi
 	var manufacturerStr, productStr, serialStr string
 	var locationID int
 
-	if manufacturer := C.getDeviceProperty(device, C.kManufacturerKey); manufacturer != 0 {
+	if manufacturer := C.IOHIDDeviceGetProperty(device, C.kManufacturerKey); manufacturer != 0 {
 		manufacturerStr = cfStringToGoString(C.CFStringRef(manufacturer))
 	}
-	if product := C.getDeviceProperty(device, C.kProductKey); product != 0 {
+	if product := C.IOHIDDeviceGetProperty(device, C.kProductKey); product != 0 {
 		productStr = cfStringToGoString(C.CFStringRef(product))
 	}
-	if serial := C.getDeviceProperty(device, C.kSerialNumberKey); serial != 0 {
+	if serial := C.IOHIDDeviceGetProperty(device, C.kSerialNumberKey); serial != 0 {
 		serialStr = cfStringToGoString(C.CFStringRef(serial))
 	}
-	if location := C.getDeviceProperty(device, C.kLocationIDKey); location != 0 {
+	if location := C.IOHIDDeviceGetProperty(device, C.kLocationIDKey); location != 0 {
 		locationID = int(C.getIntegerValue(location))
 	}
 

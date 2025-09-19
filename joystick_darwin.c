@@ -90,11 +90,6 @@ char* cfStringToCharPtr(CFStringRef str) {
     return NULL;
 }
 
-// Make IOHIDDeviceGetProperty available
-CFTypeRef getDeviceProperty(IOHIDDeviceRef device, CFStringRef key) {
-    return IOHIDDeviceGetProperty(device, key);
-}
-
 // Helper function to extract integer value from CFTypeRef
 int getIntegerValue(CFTypeRef value) {
     if (value == NULL) return 0;
