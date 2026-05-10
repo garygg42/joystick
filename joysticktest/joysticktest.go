@@ -1,16 +1,18 @@
 // Simple program that displays the state of the specified joystick
 //
-//     go run joysticktest.go 2
+//	go run joysticktest.go 2
+//
 // displays state of joystick id 2
 package main
 
 import (
 	"fmt"
-	"github.com/nsf/termbox-go"
-	"github.com/0xcafed00d/joystick"
 	"os"
 	"strconv"
 	"time"
+
+	"github.com/garygg42/joystick"
+	"github.com/nsf/termbox-go"
 )
 
 func printAt(x, y int, s string) {

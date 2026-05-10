@@ -1,4 +1,4 @@
-module github.com/0xcafed00d/joystick
+module github.com/garygg42/joystick
 
 go 1.19
 
